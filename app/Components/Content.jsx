@@ -12,22 +12,19 @@ import {
 } from "recharts";
 
 const Content = ({ skillData: initialSkillData, onUpdate }) => {
-  const [skillData, setSkillData] = useState(() => {
-    const savedData = localStorage.getItem("skillTestData");
-    return savedData ? JSON.parse(savedData) : initialSkillData;
-  });
+  const [skillData, setSkillData] = useState(initialSkillData);
 
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
-    rank: skillData.rank,
-    percentile: skillData.percentile,
-    correctAnswers: skillData.correctAnswers,
+    rank: initialSkillData.rank,
+    percentile: initialSkillData.percentile,
+    correctAnswers: initialSkillData.correctAnswers,
   });
 
   const [displayData, setDisplayData] = useState({
-    rank: skillData.rank,
-    percentile: skillData.percentile,
-    correctAnswers: skillData.correctAnswers,
+    rank: initialSkillData.rank,
+    percentile: initialSkillData.percentile,
+    correctAnswers: initialSkillData.correctAnswers,
   });
 
   const [errors, setErrors] = useState({
@@ -36,9 +33,20 @@ const Content = ({ skillData: initialSkillData, onUpdate }) => {
     rank: "",
   });
 
+  // Load data from localStorage on the client side
   useEffect(() => {
-    if(typeof window !== "undefined"){
-    localStorage.setItem("skillTestData", JSON.stringify(skillData));
+    if (typeof window !== "undefined") {
+      const savedData = (typeof window !== "undefined" && localStorage.getItem("skillTestData") ) || null ;
+      if (savedData) {
+        setSkillData(JSON.parse(savedData));
+      }
+    }
+  }, []);
+
+  // Save data to localStorage on the client side
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("skillTestData", JSON.stringify(skillData));
     }
   }, [skillData]);
 
@@ -95,6 +103,7 @@ const Content = ({ skillData: initialSkillData, onUpdate }) => {
   const studentDataPoint = skillData.graphData.find(
     (point) => point.percentile === skillData.percentile
   );
+
 
   return (
     <div className="p-6 max-w-6xl mx-auto flex-1">

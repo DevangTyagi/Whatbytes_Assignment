@@ -9,7 +9,7 @@ const Header = () => {
 
   useEffect(() => {
     setMounted(true);
-    const storedUserName = localStorage.getItem("userName") || "Devang Tyagi";
+    const storedUserName = (typeof window !== "undefined" && localStorage.getItem("userName") )|| "Devang Tyagi";
     setUserName(storedUserName);
   }, []);
 
