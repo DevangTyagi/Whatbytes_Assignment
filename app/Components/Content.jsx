@@ -37,7 +37,9 @@ const Content = ({ skillData: initialSkillData, onUpdate }) => {
   });
 
   useEffect(() => {
+    if(typeof window !== "undefined"){
     localStorage.setItem("skillTestData", JSON.stringify(skillData));
+    }
   }, [skillData]);
 
   const handleSubmit = (e) => {
