@@ -3,16 +3,15 @@ import { PieChart, Pie, Cell } from "recharts";
 import Image from "next/image";
 
 const RightSide = ({ correctAnswers }) => {
-  const totalQuestions = 15; // Total number of questions
+  const totalQuestions = 15; 
 
-  // Pie chart data
   const pieData = [
     { name: "Correct", value: correctAnswers },
     { name: "Incorrect", value: totalQuestions - correctAnswers },
   ];
 
   // Pie chart colors
-  const COLORS = ["#007bff", "#e5e5e5"]; // Blue for correct, light gray for incorrect
+  const COLORS = ["#007bff", "#e5e5e5"]; 
 
   const syllabusProgress = [
     {

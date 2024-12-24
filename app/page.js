@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Sidebar from "./Components/Sidebar"; // Import Sidebar component
-import Header from "./Components/Header"; // Import Header component
-import Content from "./Components/Content"; // Import Content component
-import RightSide from "./Components/Right"; // Import RightSide component
+import Sidebar from "./Components/Sidebar"; 
+import Header from "./Components/Header"; 
+import Content from "./Components/Content"; 
+import RightSide from "./Components/Right"; 
 
 const Home = () => {
   const [skillData, setSkillData] = useState({
