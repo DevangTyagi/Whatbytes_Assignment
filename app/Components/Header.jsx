@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 const Header = () => {
   return (
     <div className="flex items-center justify-between p-4 md:p-6 bg-white shadow-md">
